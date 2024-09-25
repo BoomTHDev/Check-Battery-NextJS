@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 'use client'
 
 import React, { useEffect, useState } from 'react'
@@ -22,7 +20,7 @@ export default function CheckBatteryComp() {
         })
 
         if ('getBattery' in navigator) {
-            (navigator).getBattery().then((battery) => {
+            (navigator as any).getBattery().then((battery: any) => {
                 const sendBatteryStatus = () => {
                     socketIo.emit('battery_status', {
                         level: battery.level * 100,
