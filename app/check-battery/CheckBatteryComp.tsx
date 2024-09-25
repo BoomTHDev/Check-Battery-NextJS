@@ -1,11 +1,10 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { io, Socket } from 'socket.io-client'
+import { io } from 'socket.io-client'
 
 export default function CheckBatteryComp() {
 
-    const [socket, setSocket] = useState<Socket | null>(null)
     const [connected, setConnected] = useState(false)
     const [loading, setLoading] = useState(true)
     const [level, setLevel] = useState(0)
@@ -14,7 +13,6 @@ export default function CheckBatteryComp() {
     useEffect(() => {
         setLoading(true)
         const socketIo = io()
-        setSocket(socketIo)
 
         socketIo.on('connect', () => {
             setConnected(true)
