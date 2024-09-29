@@ -65,7 +65,7 @@ export default function CheckBatteryComp() {
                         <h2>Battery Level : {level}%</h2>
                         <div className='flex items-center gap-2'>
                             <span>Battery Status :</span>
-                            {charging ? <CiBatteryCharging size={70} /> : level === 100 ? <CiBatteryFull size={70} /> : <CiBatteryEmpty size={70} />}
+                            {charging && level !== 100 ? <CiBatteryCharging size={70} /> : level === 100 ? <CiBatteryFull size={70} /> : <CiBatteryEmpty size={70} />}
                         </div>
                     </>
                 )}
