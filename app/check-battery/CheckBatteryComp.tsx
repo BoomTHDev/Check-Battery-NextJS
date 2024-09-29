@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { io } from 'socket.io-client'
+import { CiBatteryEmpty, CiBatteryCharging, CiBatteryFull } from 'react-icons/ci'
 
 export default function CheckBatteryComp() {
 
@@ -52,12 +53,23 @@ export default function CheckBatteryComp() {
     }, [])
 
     return (
-        <div>
-            Macbook Air M1 BoomTH {connected ? 'connected' : loading ? 'loading' : 'disconnected'}
-            <br />
-            {loading ? 'กำลังโหลดข้อมูลแบตเตอรี่' : (
-                <span>Macbook เครื่องนี้มีแบต {level}% สถานะ {charging ? 'กําลังชาร์จ' : 'ไม่ได้ชาร์จ'}</span>
-            )}
+        <div className='text-5xl'>
+
+            <div className='flex flex-col min-h-screen items-center justify-center gap-3'>
+                {loading ? 'กำลังโหลดข้อมูลแบตเตอรี่ของคุณ' : (
+                    <>
+                        <div className='flex items-center gap-2'>
+                            <h1>Connected Server Socket : </h1>
+                            <p className={`w-16 h-16 rounded-full ${connected ? 'bg-green-500' : 'bg-red-500'}`}></p>
+                        </div>
+                        <h2>Battery Level : {level}%</h2>
+                        <div className='flex items-center gap-2'>
+                            <span>Battery Status :</span>
+                            {charging ? <CiBatteryCharging size={70} /> : level === 100 ? <CiBatteryFull size={70} /> : <CiBatteryEmpty size={70} />}
+                        </div>
+                    </>
+                )}
+            </div>
         </div>
     )
 }
