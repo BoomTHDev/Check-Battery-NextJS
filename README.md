@@ -1,4 +1,4 @@
-# NextJS 14 App Router Starter-App Shadcn/UI Theme
+# NextJS 14 Monitor Battery Noob UI
 
 ## Clone Repo
 
